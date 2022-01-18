@@ -1,3 +1,15 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#----------------------------------------------------------------------------
+# Created By  : Jacob Gullberg
+# Contact     : jacob.gullberg@sigmatechnology.se
+# Created Date: 2022-01-18
+# version ='1.0'
+# ---------------------------------------------------------------------------
+# Description:
+# WP backup script for /uploads and /plugins folders for Industrireklam AB
+# ---------------------------------------------------------------------------
+
 import shutil
 import datetime
 import os
@@ -18,12 +30,12 @@ x = datetime.datetime.now()
 current_date_and_time = x.strftime("%Y-%m-%d_%H-%M-%S")
 
 # For Wordpress do we need to copy the /plugins and /uploads folder
-source_dir_plugins = r"/home/jacob/TEST/oldwordpress/plugins"
-source_dir_uploads = r"/home/jacob/TEST/oldwordpress/uploads"
+source_dir_plugins = r"/var/www/www.welandaluminium.se/public_html/wp-content/plugin"
+source_dir_uploads = r"/var/www/www.welandaluminium.se/public_html/wp-content/uploads"
 
 # Destination path where the backups should be saved
-destination_dir_plugins = r"/home/jacob/TEST/newwordpress/{}/{}/plugins".format(directory, current_date_and_time)
-destination_dir_uploads = r"/home/jacob/TEST/newwordpress/{}/{}/uploads".format(directory, current_date_and_time)
+destination_dir_plugins = r"/backup/filesbackup/{}/{}/plugins".format(directory, current_date_and_time)
+destination_dir_uploads = r"/backup/filesbackup/{}/{}/uploads".format(directory, current_date_and_time)
 
 # Copy the folders from the source to the destination
 print("STEP 1")
@@ -42,7 +54,7 @@ print("Plugins folder done.")
 print("STEP 2")
 
 # Root path to the backup path
-root = "/home/jacob/TEST/newwordpress/wp_welandaluminium"
+root = "/backup/filesbackup/{}".format(directory)
 
 no_folders_to_remove = False
 
